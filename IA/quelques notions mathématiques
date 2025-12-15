@@ -1,0 +1,39 @@
+1. La fonction
+
+Elle décrit simplement une relation entre une entrée et une sortie : à chaque donnée, on associe un résultat.
+
+2. La fonction paramétrée
+
+Elle représente un modèle qui dépend de paramètres ajustables pour mieux coller à la réalité observée.
+
+3. La combinaison linéaire
+
+C’est le calcul de base d’un neurone : pondérer les entrées, les additionner et ajouter un biais.
+
+4. La fonction d’activation
+
+Elle introduit de la non-linéarité pour permettre au modèle d’apprendre des relations complexes.
+
+5. La couche de neurones
+
+Elle transforme les données en extrayant progressivement des motifs utiles à la prédiction.
+
+6. Le réseau de neurones
+
+C’est l’enchaînement de plusieurs couches qui permet de modéliser des phénomènes de plus en plus abstraits.
+
+7. L'approximation universelle
+
+Elle illustre le fait qu’un réseau peut approcher presque n’importe quelle fonction s’il est assez riche.
+
+8. La fonction de perte
+
+Elle mesure l’écart entre les prédictions du modèle et la réalité pour guider l’apprentissage.
+
+9. Le problème d’optimisation
+
+Il consiste à trouver les paramètres qui minimisent l’erreur globale du modèle.
+
+10. La descente de gradient
+
+C’est la méthode qui ajuste progressivement les paramètres en suivant la pente de l’erreur.
