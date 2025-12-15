@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Arborescence PatFolio - D3 Zoom & Center</title>
+  <style>
+    body {margin:0; background:#fafafc;}
+    svg {background: #fff; display:block; margin:auto;}
+    .node {cursor:pointer; transition: stroke-width .2s;}
+    .node.folder { fill: orange; }
+    .node.file { fill: steelblue; }
+    .node:hover { stroke: #222; stroke-width:2px; }
+    .label { font-size:13px; pointer-events:none; font-family:Arial,sans-serif;}
+    .link { stroke: #aaa; stroke-width: 2px;}
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">Arborescence du PatFolio</h2>
+  <svg></svg>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+  function setupGraph() {
+    // --------- lecture du JSON ---------
+    fetch('patfolio_tree.json')
+      .then(res => res.json())
+      .then(data => {
+        const nodes = data.nodes;
+        const links = data.links;
+
+        // Calculer le nombre d'enfants pour chaque nœud
+        const childCount = {};
+        nodes.forEach(node => childCount[node.id] = 0);
+        links.forEach(link => {
+          childCount[link.source]++;
+        });
+        
+        // Ajouter le nombre d'enfants à chaque nœud
+        nodes.forEach(node => {
+          node.childCount = childCount[node.id];
+        });
+
+        // Dimensions responsive
+        let width = window.innerWidth;
+        let height = window.innerHeight * 0.8;
+
+        const svg = d3.select("svg")
+          .attr("width", width)
+          .attr("height", height);
+
+        // Tout le graphe est dans un container (<g>) pour le zoom/pan
+        const container = svg.append("g");
+
+        // --- Zoom/Pan ---
+        const zoom = d3.zoom()
+                  .scaleExtent([0.2, 4])
+                .on("zoom", (event) => container.attr("transform", event.transform)); 
+
+        svg.call(zoom);
+
+
+        // --- Simulation des forces (modifiée selon tes paramètres) ---
+        const simulation = d3.forceSimulation(nodes)
+          .force("link", d3.forceLink(links).id(d => d.id).distance(120).strength(1))
+          .force("charge", d3.forceManyBody().strength(-400))    // répulsion plus forte
+          .force("center", d3.forceCenter(width / 2, height / 2))
+          .force("collide", d3.forceCollide(30));                // bulles non superposées
+
+        // --- Création des liens (lines) ---
+        const link = container.append("g")
+          .attr("stroke", "#aaa")
+          .attr("stroke-width", 2)
+          .selectAll("line")
+          .data(links)
+          .join("line")
+          .attr("class", "link");
+
+        // --- Création des nœuds (bulles) ---
+        const node = container.append("g")
+          .selectAll("circle")
+          .data(nodes)
+          .join("circle")
+          .attr("class", d => d.childCount > 0 ? "node folder" : "node file")
+          .attr("r", d => {
+            // Rayon proportionnel au nombre d'enfants (minimum 20)
+            return Math.max(20, 15 + d.childCount * 6);
+          })
+          .on("click", (event, d) => {
+            centerOnNode(d);
+            // Pour ouvrir aussi le fichier, décommente la ligne suivante
+            // setTimeout(() => window.open(d.path, "_blank"), 800);
+          })
+          .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended)
+          );
+
+        // --- Création des labels (textes sur les bulles) ---
+        const label = container.append("g")
+                        .selectAll("text")
+                        .data(nodes)
+                        .join("text")
+                        .attr("class", "label")
+                        .attr("text-anchor", "middle")
+                        .attr("dy", 6)
+                        .attr("font-size", 19)
+                        .attr("fill", "#134")
+                        .style("pointer-events", "auto")
+                        .style("cursor", "pointer")
+                        .text(d => d.id)
+                        .on("click", (event, d) => {
+                            event.stopPropagation();
+                            if (d.path)
+                                {
+                                    window.top.location.href = d.path + '.html';
+                                }
+                                });
+
+
+        // --- tick de la simulation (positionne les éléments) ---
+        simulation.on("tick", () => {
+          node.attr("cx", d => d.x)
+              .attr("cy", d => d.y);
+
+          link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+              .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+
+          label.attr("x", d => d.x)
+               .attr("y", d => d.y);
+        });
+
+        // --- drag sur les bulles ---
+        function dragstarted(event, d) {
+          if (!event.active) simulation.alphaTarget(0.3).restart();
+          d.fx = d.x;
+          d.fy = d.y;
+        }
+        function dragged(event, d) {
+          d.fx = event.x;
+          d.fy = event.y;
+        }
+        function dragended(event, d) {
+          if (!event.active) simulation.alphaTarget(0);
+          d.fx = null;
+          d.fy = null;
+        }
+
+        // --- Fonction pour centrer / zoomer sur une bulle ---
+        function centerOnNode(d) {
+          let scale = 1.5;  // niveau de zoom
+          let tx = width / 2 - d.x * scale;
+          let ty = height / 2 - d.y * scale;
+          svg.transition()
+            .duration(750)
+            .call(
+              d3.zoom().transform,
+              d3.zoomIdentity.translate(tx, ty).scale(scale)
+            );
+        }
+
+        // --- Responsive : adapte la taille du svg et recalcule center/forces à chaque resize ---
+        window.addEventListener('resize', () => {
+          width = window.innerWidth;
+          height = window.innerHeight * 0.8;
+          svg.attr("width", width).attr("height", height);
+          simulation.force("center", d3.forceCenter(width / 2, height / 2));
+          simulation.alpha(1).restart();
+        });
+      });
+  }
+  setupGraph();
+  </script>
+</body>
+</html>

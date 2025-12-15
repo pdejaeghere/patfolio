@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {"id": "Patfolio", "path": "."},        
+    {"id": "à propos", "path": "à propos"},
+    {"id": "Archi", "path": "Architecture logicielle/presentation"},
+    {"id": "IA", "path": "IA/presentation"},
+    {"id": "Faut-il craindre l'IA", "path": "IA/Faut il craindre IA"},
+    {"id": "La descente du gradient", "path": "IA/La descente du gradient"},
+    {"id": "Mamma mia!", "path": "IA/mamma mia"},
+    {"id": "Ma via vers l'IA", "path": "IA/ma_via_vers_ia"},
+    {"id": "Patbot et Rag la casquette", "path": "IA/Patbot et Rag la casquette "},
+    {"id": "Pense-bête-Python", "path": "IA/Pense-bête-Python"},
+    {"id": "Math", "path": "math/presentation"} ,  
+    {"id": "Mathématiques joyeuses", "path": "math/Mathématiques joyeuses"}    
+  ],
+  "links": [
+    
+    {"source": "Patfolio", "target": "Archi"},
+    {"source": "Patfolio", "target": "IA"},
+    {"source": "Patfolio", "target": "Math"},
+    {"source": "Patfolio", "target": "à propos"},        
+    {"source": "IA", "target": "Faut-il craindre l'IA"},
+    {"source": "IA", "target": "La descente du gradient"},
+    {"source": "IA", "target": "Mamma mia!"},
+    {"source": "IA", "target": "Ma via vers l'IA"},
+    {"source": "IA", "target": "Patbot et Rag la casquette"},
+    {"source": "IA", "target": "Pense-bête-Python"},
+    {"source": "Math", "target": "Mathématiques joyeuses"}    
+  ]
+}
