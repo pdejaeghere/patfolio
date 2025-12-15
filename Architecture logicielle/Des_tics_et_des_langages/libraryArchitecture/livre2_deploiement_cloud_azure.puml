@@ -1,0 +1,36 @@
+@startuml
+ title Diagramme de déploiement Azure Cloud Library (AKS + Application Gateway + PostgreSQL as a Service)
+
+cloud "Microsoft Azure" {
+  node "Application Gateway" {
+    component "Azure Application Gateway (Ingress)"
+  }
+  node "AKS Cluster" {
+    node "Web Pod" {
+      component "UI Front Office"
+    }
+    node "App Pod" {
+      component "Library Service"
+    }
+    node "Catalog Pod" {
+      component "BookCatalog Service"
+      component "AuthorCatalog Service"
+    }
+  }
+  database "Azure Database for PostgreSQL" {
+    component "PostgreSQL DB"
+  }
+}
+
+node "Client Device" as client {
+  component "Web Browser"
+}
+
+client --> "Azure Application Gateway (Ingress)"
+"Azure Application Gateway (Ingress)" --> "UI Front Office"
+"UI Front Office" --> "Library Service"
+"Library Service" --> "BookCatalog Service"
+"Library Service" --> "AuthorCatalog Service"
+"BookCatalog Service" --> "PostgreSQL DB"
+"AuthorCatalog Service" --> "PostgreSQL DB"
+@enduml

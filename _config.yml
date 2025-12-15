@@ -1,0 +1,16 @@
+title: PatFolio
+description: A personal portfolio site 
+remote_theme: just-the-docs/just-the-docs
+theme: just-the-docs
+kramdown:
+  math_engine: mathjax
+  input: GFM
+
+logo: "assets/images/logo2.png"
+
+color_scheme: patfolioTheme
+
+aux_links:
+  "Linkedin":
+    - "https://www.linkedin.com/in/patrice-de-jaeghere-893b04299/"
+aux_links_new_tab: true

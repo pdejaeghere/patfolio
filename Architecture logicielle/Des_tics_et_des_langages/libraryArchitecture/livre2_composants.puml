@@ -1,0 +1,29 @@
+@startuml
+ title Diagramme de composants – Système Library
+
+package "Front Office" {
+  [Search UI]
+  [Book Management UI]
+  [Author Management UI]
+}
+
+package "Backend" {
+  [Library Service]
+  [BookCatalog Service]
+  [AuthorCatalog Service]
+}
+
+package "Storage" {
+  [Database]
+}
+
+[Search UI] --> [Library Service]
+[Book Management UI] --> [Library Service]
+[Author Management UI] --> [Library Service]
+
+[Library Service] --> [BookCatalog Service]
+[Library Service] --> [AuthorCatalog Service]
+
+[BookCatalog Service] --> [Database]
+[AuthorCatalog Service] --> [Database]
+@enduml

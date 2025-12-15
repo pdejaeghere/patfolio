@@ -1,0 +1,39 @@
+@startuml
+ title Diagramme de classes – Modèle métier Library
+
+class Library {
+  +FindBookInstance(criteria)
+}
+
+class PhysicalBook{
+  Position
+  Price
+  EditionYear
+}
+
+class Book {
+  Title
+  Summary
+
+}
+
+class Author {
+  LastName
+  FirstName
+}
+
+class BookCatalog {
+  +FindBook(criteria)
+}
+
+class AuthorCatalog {
+  +FindAuthor(criteria)
+}
+
+Library "1" *-- "n" PhysicalBook: contains
+PhysicalBook"0..*" o-- "1" Book : refersTo
+BookCatalog "1" o-- "0..*" Book : catalog
+Author "1" o-- "1..*" Book : wrote
+AuthorCatalog "1" o-- "0..*" Author : catalog
+
+@enduml

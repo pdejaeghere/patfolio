@@ -1,0 +1,12 @@
+@startuml
+start
+:Entrer N;
+:Initialiser x = N/2;
+repeat
+  :Calculer x1 = (x + N / x) / 2;
+  :Diff = |x1 - x|;
+  :x = x1;
+repeat while (Diff > tolérance)
+:Afficher x1 (racine carrée approchée);
+stop
+@enduml

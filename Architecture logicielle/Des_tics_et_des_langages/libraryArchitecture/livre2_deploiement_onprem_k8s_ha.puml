@@ -1,0 +1,53 @@
+@startuml
+ title Diagramme de déploiement – On-Premise HA (Load Balancer externe + NGINX Ingress dans K8s, 2 serveurs)
+
+node "Client Device" as client {
+  component "Web Browser"
+}
+
+node "Load Balancer" as lb {
+  component "HAProxy / F5 / autre"
+}
+
+node "On-Premise Server 1" {
+  node "Kubernetes Node 1" {
+    node "NGINX Ingress Pod" {
+      component "NGINX Ingress"
+    }
+    node "Web Pod" {
+      component "UI Front Office"
+    }
+    node "App Pod" {
+      component "Library Service"
+    }
+    node "Catalog Pod" {
+      component "BookCatalog Service"
+      component "AuthorCatalog Service"
+    }
+    node "Postgres Pod (Primary)" {
+      component "PostgreSQL DB (Primary)"
+    }
+  }
+}
+
+node "On-Premise Server 2" {
+  node "Kubernetes Node 2" {
+    node "NGINX Ingress Pod" {
+      component "NGINX Ingress"
+    }
+    node "Postgres Pod (Replica)" {
+      component "PostgreSQL DB (Replica)"
+    }
+  }
+}
+
+client --> lb
+lb --> "NGINX Ingress"
+"NGINX Ingress" --> "UI Front Office"
+"UI Front Office" --> "Library Service"
+"Library Service" --> "BookCatalog Service"
+"Library Service" --> "AuthorCatalog Service"
+"BookCatalog Service" --> "PostgreSQL DB (Primary)"
+"AuthorCatalog Service" --> "PostgreSQL DB (Primary)"
+"PostgreSQL DB (Primary)" <--> "PostgreSQL DB (Replica)"
+@enduml

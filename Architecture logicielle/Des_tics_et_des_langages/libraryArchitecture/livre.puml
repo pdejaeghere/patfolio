@@ -1,0 +1,14 @@
+@startuml
+class Librairie {
+}
+
+class Livre {
+}
+
+class Ecrivain {
+}
+
+Librairie "1" *-- "n" Livre : contient
+Ecrivain "1" -left-o "0..*" Livre : écrivain
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+ title Diagramme de déploiement – Système Library
+
+node "Client" {
+  component "UI Front Office"
+}
+
+node "App Server" {
+  component "Library Service"
+  component "BookCatalog Service"
+  component "AuthorCatalog Service"
+}
+
+database "DB Server" {
+  component "LibraryDB"
+}
+
+"UI Front Office" --> "Library Service"
+"Library Service" --> "BookCatalog Service"
+"Library Service" --> "AuthorCatalog Service"
+"BookCatalog Service" --> "LibraryDB"
+"AuthorCatalog Service" --> "LibraryDB"
+@enduml

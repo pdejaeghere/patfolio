@@ -1,0 +1,17 @@
+@startuml
+ title Diagramme de collaboration – Recherche livre
+actor User
+participant "Search UI"
+participant "Library Service"
+participant "BookCatalog Service"
+participant "Database"
+
+User -> "Search UI" : Recherche livre
+"Search UI" -> "Library Service" : FindBookInstance(criteria)
+"Library Service" -> "BookCatalog Service" : FindBook(criteria)
+"BookCatalog Service" -> "Database" : Query
+"Database" --> "BookCatalog Service" : Books
+"BookCatalog Service" --> "Library Service" : Books
+"Library Service" --> "Search UI" : Book instances
+"Search UI" --> User : Resultat
+@enduml
