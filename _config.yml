@@ -7,3 +7,9 @@ kramdown:
 
 
 logo: "/assets/images/just-the-docs.png"
+
+include: 
+ - IA
+ - IA/smallproject
+ - IA/smallproject/wwwroot
+ - IA/smallproject/wwwroot/_framework
