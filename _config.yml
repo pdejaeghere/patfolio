@@ -1,6 +1,5 @@
 title: PatFolio
-description: A starter template for a Jeykll site using the Just the Docs theme!
-
+description: A personal portfolio site 
 remote_theme: just-the-docs/just-the-docs
 kramdown:
   math_engine: mathjax
