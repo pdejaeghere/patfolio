@@ -38,7 +38,7 @@ Reconnaissons-le, les LLM ne sont pas à jeter, on ne pourra pas de toutes faço
 Vaste débat...  
 Ceux qui ne codent plus depuis longtemps le reconnaissent : on rouille très vite. Si l’on perd la maîtrise du code, saura-t-on corriger les bugs ? Comprendre ce qui dysfonctionne ?  
 Bien entendu, développer ne consiste surtout pas à réinventer la roue à chaque fois! Ça se saurait 😉. S’il fallait reprogrammer systématiquement de simples tris ou des recherches dans des chaînes de caractères, on n’avancerait pas beaucoup. Des librairies existent, qu’on se doit de réutiliser.  
-Mais rien que d’organiser le code, penser à sa maintenabilité par les collegues, appliquer les principes de conception, est une démarche intellectuelle qui doit rester de notre ressort, au risque de rouiller complètement ce fantastique ordinateur naturel embarqué dans notre boîte crânienne en ne lui donnant plus suffisamment de grain à moudre.  
+Mais rien que d’organiser le code, penser à sa maintenabilité par les collègues, appliquer les principes de conception, est une démarche intellectuelle qui doit rester de notre ressort, au risque de rouiller complètement ce fantastique ordinateur naturel embarqué dans notre boîte crânienne en ne lui donnant plus suffisamment de grain à moudre.  
 Concevoir un programme, c’est être comme un compositeur qui utilise le solfège, bien plus efficace que le langage naturel pour exprimer ce qu'il a en tête et pour le communiquer.
 Et surtout, aimera-t-on encore notre métier ? La plupart des développeurs et architectes sont avant tout des personnes qui sont tombées dans la marmite étant petits en codant !
 
