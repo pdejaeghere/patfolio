@@ -19,7 +19,7 @@ Pourquoi ne pas y partager aussi des lectures scientifiques ou littéraires, car
 
 *Lire pour ralentir...*
 
-Quand à écrire, c’est surtout un moyen de travailler, de ne pas oublier, de mieux s’approprier les choses, de se donner des objectifs et des contraintes de résultat. Il n’y a pas d’effort sans réconfort mais, réciproquement, il n’y a pas de réconfort sans l'effort… pour continuer à rester fort (ça, c’est surtout pour la rime 😉) car oui, comme en sport, l'effort intellectuel déclenche une sorte d'adrénaline qui agit comme une récompense, et donc une source de plaisir !
+Quand à écrire, c’est surtout un moyen de travailler, de ne pas oublier, de mieux s’approprier les choses, de se donner des objectifs et des contraintes de résultat. Il n’y a pas d’effort sans réconfort mais, réciproquement, il n’y a pas de réconfort sans l'effort… pour continuer à rester fort (ça, c’est surtout pour la rime 😉) car oui, comme en sport, l'effort intellectuel a son adrénaline !
 
 Je me fixe pour l’instant **3 objectifs**. **Le premier** est de proposer **une synthèse sur les principes d’architecture**. Même si cela n’a rien de transcendant ni d’original — Internet en regorge, sans parler des livres par centaines ni, bien évidemment, de ChatGPT et consorts, capables de générer ce genre de synthèses en quelques secondes — c’est un exercice nécessaire pour prendre du recul et entretenir sa connaissance et son expérience.
 
