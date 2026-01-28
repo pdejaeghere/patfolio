@@ -19,327 +19,164 @@ Bref, Maîtriser Python semble donc aujourd’hui incontournable, et il n’est 
 
 ## Installation
 
+Dans les vidéos [Machine Learnias](https://www.youtube.com/watch?v=8GBzamEdMOI), le formateur conseille d'installer [Anaconda](https://www.anaconda.com/download) qui permet d'avoir tout l'environnement necessaire( Python, packages, outils) très facilement sans se poser de questions.
 
-:~/miniforge3/envs/sage
+Mais il se trouve que j'avais installé SageMath sur une distribution Ubuntu tournant sous le WSL de Windows 11.  J'avais suivi ce  [tutorial](https://doc.sagemath.org/html/en/installation/conda.html). Sage se base sur Python et sur le même ecosystem que Anaconda propose, un ensemble de package pour le calcul scientifique et pour l'IA.
+En fait, en suivant le tutorial, j'ai installé Miniforge qui founi le minimum d'outils et de package nécessaire mais qu'on peut étendre au fur et à mesure des besoins. 
+
+### Miniforge
+Donc le point d'entrée, c'est Miniforge
+```bash
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+bash Miniforge3-$(uname)-$(uname -m).sh
+```
+
+
+### Conda
+
+L'outil de base est conda. C'est le gestionnaire de packages scientifiques ( l'équivalent de npm pour node.js ou du gestionnaire nuget de .Net). 
+Notons que Python a son propre gestionnaire de package : Pip, mais c'est plus général et ça ne contient pas necessairement les packages scientifiques utilisés pour l'IA. 
+Quoique... parfois Pip a la préference pour obtenir certains packages plus à jours.
+
+```bash
+pip torch tensorflow 
+```
+
+Pour installer un package, il suffit d'utiliser l'instruction install
+
+```bash
+conda install numpy 
+conda install pandas matplotlib seaborn scikit-learn
+```
+
+On peut spécifier different dépots de package: Anaconda ou conda-forge.
+
+Avec Miniforge, conda-forge est configuré par défaut mais si ce n'etait pas le cas (si on avait installé Anaconda par exemple), voici ce qu'on pourrait faire:
+
+```bash
+conda config --add channels conda-forge
+```
+ou le spécifier au moment d'installer un package
+
+```bash
+conda install -c conda-forge numpy
+```
+
+Conda fournit la notion d'environnement (en fait, configure les variables d'environnement de Linux, un peu comme Docker mais en beaucoup moins poussé. Il faut aussi savoir que Python a sa propre notion d'environnement venv. Si j'ai bien compris, Conda utilise venv) afin de permettre une isolation entre les differentes installations de Package.
+En suivant le tutorial d'installation de SageMath, le fait de lancer conda create -n sage sage a créé un environnement Sage.
+Mais on peut créer d'autres environnement et switcher de l'un à l'autre via la commande activate:
+
+```bash
 conda activate sage
-conda install numpy pandas matplotlib seaborn scikit-learn
+```
+Tout ce que j’installe maintenant va dans */home/patrice/miniforge3/envs/sage*
 
-pip install torch tensorflow
-
- ./sage -n jupyter
-
-
-conda env: sage (Python 3.11)
-
-1️⃣ Installer l’extension Remote - WSL
-
-Dans VS Code (Windows) :
-
-Extensions → cherche “Remote - WSL”
-
-Installe-la
-
-C’est tout pour Windows.
-
-2️⃣ Ouvrir VS Code depuis WSL
-
-Dans ton terminal WSL :
-
-cd ton_projet
-code .
-
-➡️ La première fois :
-
-VS Code va installer automatiquement un petit serveur dans WSL
-
-tu verras en bas à gauche :
-WSL: Ubuntu (ou autre)
-
-👉 À partir de là, tu travailles réellement dans WSL.
-
-3️⃣ Sélectionner ton Python conda
-
-Dans VS Code (connecté à WSL) :
-
-Ctrl + Shift + P
-
-Python: Select Interpreter
-
-choisis :
-
-conda env: sage (Python 3.11)
-
-✅ Terminé.
-
-Et Jupyter dans tout ça ?
-
-Deux options, au choix :
-
-Option A — Notebooks directement dans VS Code (recommandé)
-
-Installe l’extension Jupyter
-
-Ouvre un .ipynb
-
-Sélectionne le kernel :
-
-Python (sage)
-
-👉 Tu n’as même plus besoin de lancer ./sage -n jupyter à la main.
-
-Option B — Continuer ton Jupyter “classique”
-
-Tu peux aussi :
-
-./sage -n jupyter
-
-et ouvrir le navigateur comme avant.
-
-VS Code est optionnel, pas obligatoire.
-
-
-# Environnement Python / Machine Learning – Résumé
-
-Ce document résume les outils et concepts que tu utilises (ou peux utiliser) autour de Python, du machine learning et du calcul scientifique, dans un contexte **WSL + conda**.
-
----
-
-## 1. Miniforge
-
-### Qu’est-ce que c’est ?
-
-**Miniforge** est une distribution minimale de **conda**, basée sur **conda-forge**.
-
-* Alternative légère à Anaconda
-* Ne contient que le strict nécessaire
-* Pas de packages préinstallés inutiles
-
-### À quoi ça sert ?
-
-* Installer et gérer des environnements Python isolés
-* Installer des bibliothèques scientifiques sans casser le système
-
-### Avantages
-
-* Léger
-* Prévisible
-* Idéal pour WSL, Docker, serveurs
-
----
-
-## 2. conda
-
-### Qu’est-ce que c’est ?
-
-**conda** est un gestionnaire :
-
-* d’environnements
-* de packages (Python *et* non-Python)
-
-### Environnement conda
-
-Un environnement conda est :
-
-* un Python isolé
-* avec ses propres bibliothèques
-* indépendant du reste du système
-
-### Commandes essentielles
+Pour avoir la liste des environnements, il faut taper l'instruction suivante
 
 ```bash
-conda create -n mon_env python=3.11
-conda activate mon_env
-conda deactivate
-conda env list
+conda activate sage
 ```
 
----
-
-## 3. Python
-
-### Rôle
-
-Python est le langage principal pour :
-
-* machine learning
-* data science
-* calcul scientifique
-
-### Dans ton setup
-
-* Python est installé **via conda**
-* Chaque environnement a sa propre version de Python
-
----
-
-## 4. SageMath
-
-### Qu’est-ce que c’est ?
-
-**SageMath** est un système de calcul mathématique (CAS).
-
-Il combine :
-
-* Python
-* NumPy / SciPy
-* outils de calcul symbolique
-
-### Installation (idée générale)
-
-Sage est souvent installé séparément, puis utilisé avec Python/Jupyter.
-
-### Particularité
-
-Sage peut lancer son propre serveur Jupyter :
+j'obtiens
 
 ```bash
-./sage -n jupyter
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                     /home/patrice/miniforge3
+sage                 *   /home/patrice/miniforge3/envs/sage
 ```
 
-Cela permet d’utiliser :
+Il faut faire attention car Python est installé à deux endroits:  dans base et dans sage.
 
-* Python
-* Sage
-* dans des notebooks
+Pour s'en rendre compte ,
 
----
+```Python test.py
+import sys
+print(sys.executable)
+```
 
-## 5. Jupyter
+```bash
+conda activate base
+python test.py
+/home/patrice/miniforge3/bin/python
 
-### Qu’est-ce que c’est ?
+conda activate sage
+python test.py
+/home/patrice/miniforge3/envs/sage/bin/python
+
+```
+
+### Les éditeurs
+
+ J'ai essayé les 3 outils :
+
+#### Jupyter
 
 **Jupyter Notebook** est une interface interactive basée sur le navigateur.
+On retrouve son utilisation dans plusieurs tutoriaux, par exemple [coursera machine learning](https://www.coursera.org/learn/machine-learning/). Cela semble idéal pour l'apprentissage car le fichier contient des cellules  contenant du markdown pour les explications ou directement du Python executable.
 
-Elle permet de mélanger :
+En local, je le lance via sage :
 
-* code
-* texte
-* équations
-* graphiques
+```bash
+./sage -n jupyter
+```
 
-### Les cellules
+ou 
+```bash
+jupyter notebook
+```
 
-Un notebook est composé de **cellules**.
+jupyter a la notion de Kernel: 
 
-#### Cellules de code
+- Jupyter = serveur + interface
+- Kernel = moteur d’exécution
 
-* Contiennent du Python (ou Sage)
-* S’exécutent avec `Shift + Enter`
+Dans mon cas, j'ai deux kernels
 
-#### Cellules Markdown
-
-* Contiennent du texte formaté
-* Servent à expliquer le raisonnement
-
-### Pourquoi c’est très utilisé en ML
-
-* Raisonnement pas à pas
-* Visualisation immédiate
-* Idéal pour l’apprentissage
+- Python (sage)
+- SageMath
 
 ---
 
-## 6. Spyder
-
-### Qu’est-ce que c’est ?
+#### Spyder
 
 **Spyder** est un IDE scientifique, proche de MATLAB.
 
-Il propose :
+Un peu comme Visual Studio Code, c'est un éditeur de code avec une console interactive et permettant de débugguer.
 
-* éditeur de code
-* console interactive
-* explorateur de variables
-
-### Lancement dans WSL
-
-Spyder doit être :
-
-* installé dans l’environnement conda
-* lancé depuis WSL
+Spyder doit être installé dans l’environnement conda.
 
 ```bash
 conda activate sage
+conda install spyder
 spyder
 ```
+Ce qui est génial avec Windows 11, c'est que le code d'excute dans WSL mais l'interface dans Windows. Windows 11 propose nativement un serveur X-Window ! 
 
-Avec WSLg :
 
-* l’interface graphique s’affiche sous Windows
-* le code s’exécute dans WSL
+#### Visual Studio Code
 
----
+Je connais mieux cet éditeur donc il a ma préférence. Il tourne sous windows mais on peut installer une extension Remote-WSL afin d'utiliser le Python installé via Miniforge. Cela évite d'installer un Python sous windows
+Il faut ensuite se connecter sur le WSL. Idem, il y a une sorte d'isolation entre les extensions installées pour le vscode connecté à Windows et celui connecté à WSL Ubuntu.  
+Par exemple, pour pouvoir debugguer le Python, j'avais installé l'extension Python de microsoft. J'étais connecté à WSL, et bien , une fois revenus sur Windows, impossible d'executer le code sans installer l'extension et une version de Python sur Windows.
 
-## 7. Visual Studio Code (VS Code)
+Revenons à VsCode connecté à Ubuntu. 
+J'ai eu une drole de surprise en faisant  Ctrl + Shift + P puis Python: Select Interpreter. 
 
-### Qu’est-ce que c’est ?
+4 versions d'interpréteur Python  ! 
 
-VS Code est un éditeur / IDE généraliste, très extensible.
+| Emplacement                                     | Rôle / Explication                                                                                                           |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `/bin/python`                                   | Python système “très basique” → utilisé par Linux pour les scripts essentiels et très tôt au démarrage                       |
+| `/usr/bin/python`                               | Python système principal → la plupart des paquets Linux s’installent ici via `apt`                                           |
+| `/home/patrice/miniforge3/bin/python`           | Python de **Miniforge `base`** → installé avec Miniforge, sert à conda lui-même et à exécuter des scripts hors environnement |
+| `/home/patrice/miniforge3/envs/sage/bin/python` | Python de **ton environnement `sage`** → celui que je veux utiliser pour le ML et Sage                                       |
 
-### Avec WSL
 
-VS Code Windows peut :
 
-* se connecter à WSL
-* éditer les fichiers Linux
-* exécuter Python dans WSL
+![alt text](VsCodePythonWSL.png)
 
-Extension clé :
 
-* **Remote – WSL**
-
-### Avantages
-
-* Très bon pour les projets longs
-* Support des notebooks Jupyter
-* Debugging puissant
-
----
-
-## 8. WSL (Windows Subsystem for Linux)
-
-### Qu’est-ce que c’est ?
-
-WSL permet d’exécuter Linux directement sous Windows.
-
-### Rôle dans ton setup
-
-* Linux réel (Ubuntu, Debian…)
-* Meilleure compatibilité avec Python scientifique
-* Environnement propre et isolé de Windows
-
-### Architecture simplifiée
-
-```
-Windows
-  └── VS Code / Navigateur
-        └── WSL (Linux)
-              └── conda
-                    └── Python / Sage / ML
-```
-
----
-
-## 9. Comparaison rapide des outils
-
-| Outil     | Rôle principal                   |
-| --------- | -------------------------------- |
-| Miniforge | Installer conda minimal          |
-| conda     | Gérer environnements & packages  |
-| Python    | Langage principal                |
-| Sage      | Calcul mathématique              |
-| Jupyter   | Notebooks interactifs            |
-| Spyder    | IDE scientifique                 |
-| VS Code   | IDE généraliste                  |
-| WSL       | Environnement Linux sous Windows |
-
----
-
-## 10. Philosophie générale
-
-* **WSL + conda** : apprendre, expérimenter
-* **Jupyter** : comprendre et explorer
-* **VS Code** : structurer et faire évoluer
-* **Docker** : plus tard, pour la reproductibilité
-
-👉 Ton setup actuel est **cohérent, moderne et suffisant** pour apprendre le machine learning.
+**Ouf ! je vais pouvoir commencer à écrire du Python !**
