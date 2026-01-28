@@ -1,6 +1,6 @@
 {
   "nodes": [
-    {"id": "Patfolio", "path": "."},        
+    {"id": "Patfolio", "path": ""},        
     {"id": "à propos", "path": "à propos"},
     {"id": "Archi", "path": "Architecture logicielle/presentation"},
     {"id": "IA", "path": "IA/presentation"},

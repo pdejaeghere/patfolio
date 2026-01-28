@@ -11,6 +11,14 @@
     .node.file { fill: steelblue; }
     .node:hover { stroke: #222; stroke-width:2px; }
     .label { font-size:13px; pointer-events:none; font-family:Arial,sans-serif;}
+    .linklabel  {
+  font-size: 13px;
+  font-family: Arial, sans-serif; 
+  color: #007bff; 
+  text-decoration: underline; 
+  pointer-events: auto; 
+}
+
     .link { stroke: #aaa; stroke-width: 2px;}
   </style>
 </head>
@@ -21,7 +29,7 @@
   <script>
   function setupGraph() {
     // --------- lecture du JSON ---------
-    fetch('patfolio_tree.json')
+    fetch('patfolio_tree.json', {cache: "reload"})
       .then(res => res.json())
       .then(data => {
         const nodes = data.nodes;
@@ -58,7 +66,7 @@
         svg.call(zoom);
 
 
-        // --- Simulation des forces (modifiée selon tes paramètres) ---
+        // --- Simulation des forces  ---
         const simulation = d3.forceSimulation(nodes)
           .force("link", d3.forceLink(links).id(d => d.id).distance(120).strength(1))
           .force("charge", d3.forceManyBody().strength(-400))    // répulsion plus forte
@@ -74,7 +82,7 @@
           .join("line")
           .attr("class", "link");
 
-        // --- Création des nœuds (bulles) ---
+        // --- Création des noeuds (bulles) ---
         const node = container.append("g")
           .selectAll("circle")
           .data(nodes)
@@ -86,8 +94,7 @@
           })
           .on("click", (event, d) => {
             centerOnNode(d);
-            // Pour ouvrir aussi le fichier, décommente la ligne suivante
-            // setTimeout(() => window.open(d.path, "_blank"), 800);
+           
           })
           .call(d3.drag()
             .on("start", dragstarted)
@@ -100,7 +107,7 @@
                         .selectAll("text")
                         .data(nodes)
                         .join("text")
-                        .attr("class", "label")
+                        .attr("class", "linklabel")
                         .attr("text-anchor", "middle")
                         .attr("dy", 6)
                         .attr("font-size", 19)
@@ -110,8 +117,8 @@
                         .text(d => d.id)
                         .on("click", (event, d) => {
                             event.stopPropagation();
-                            if (d.path)
-                                {
+                            if (d.path!='')
+                                {                                
                                     window.top.location.href = d.path + '.html';
                                 }
                                 });
