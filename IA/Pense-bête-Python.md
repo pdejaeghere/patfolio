@@ -19,7 +19,7 @@ Bref, maîtriser Python semble donc aujourd’hui incontournable, et il n’est 
 
 ## Installation
 
-Dans les vidéos [Machine Learnias](https://www.youtube.com/watch?v=8GBzamEdMOI), le formateur conseille d'installer [Anaconda](https://www.anaconda.com/download), qui permet d'avoir tout l'environnement nécessaire (Python, packages, outils) très facilement sans se poser de questions.
+Dans les vidéos [Machine Learnias](https://www.youtube.com/watch?v=8GBzamEdMOI), le formateur conseille d'installer [Anaconda](https://www.anaconda.com/download), qui permet d'avoir tout l'environnement nécessaire et suffisant (Python, packages, outils) très facilement sans se poser de questions.
 
 Mais il se trouve que j'avais installé SageMath sur une distribution Ubuntu tournant sous le WSL de Windows 11. J'avais suivi ce [tutorial](https://doc.sagemath.org/html/en/installation/conda.html). Sage se base sur Python et sur le même écosystème que propose Anaconda, un ensemble de packages pour le calcul scientifique et pour l'IA.
 En fait, en suivant le tutoriel, j'ai installé Miniforge qui fournit le minimum d'outils et de packages nécessaires mais qu'on peut étendre au fur et à mesure des besoins.
@@ -89,9 +89,9 @@ sage                 *   /home/patrice/miniforge3/envs/sage
 
 Il faut faire attention car Python est installé à deux endroits : dans base et dans sage.
 
-Pour s'en rendre compte :
+Pour s'en rendre compte, on peut lancer le script suivant qui donne le chemin de l'interpréteur:
 
-```Python test.py
+```Python
 import sys
 print(sys.executable)
 ```
@@ -158,13 +158,13 @@ Ce qui est génial avec Windows 11, c'est que le code s'exécute dans WSL mais l
 #### Visual Studio Code
 
 Je connais mieux cet éditeur donc il a ma préférence. Il tourne sous Windows mais on peut installer une extension Remote-WSL afin d'utiliser le Python installé via Miniforge. Cela évite d'installer un Python sous Windows.
-Il faut ensuite se connecter sur le WSL. Idem, il y a une sorte d'isolation entre les extensions installées pour le VSCode connecté à Windows et celui connecté à WSL Ubuntu.  
+Il faut ensuite se connecter sur le WSL. Il y a une isolation entre les extensions installées pour le VSCode connecté à Windows et celui connecté à WSL Ubuntu.  
 Par exemple, pour pouvoir déboguer un script, j'ai du installer l'extension Python de Microsoft. J'étais connecté à WSL pour cette installation, et bien, une fois revenu sur Windows, la même extension doit être à nouveau installé si je veux lancer le même script mais avec une version de Python sous Windows.
 
 Revenons à VSCode connecté à Ubuntu. 
 J'ai eu une drôle de surprise en faisant Ctrl + Shift + P puis Python: Select Interpreter. 
 
-4 versions d'interpréteur Python ! 
+4 versions d'interpréteur Python 🙃! 
 
 | Emplacement                                     | Rôle / Explication                                                                                                           |
 | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -175,6 +175,6 @@ J'ai eu une drôle de surprise en faisant Ctrl + Shift + P puis Python: Select I
 
 ![alt text](VsCodePythonWSL.png)
 
-**Ouf ! je vais pouvoir commencer à écrire du Python !**
+**Ouf ! je vais pouvoir enfin commencer à écrire du Python !**😎
 
 ---
