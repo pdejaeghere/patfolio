@@ -19,7 +19,7 @@ Quels sont les IArmateurs détenant les grands navires LLM de pêche d'utilisate
  - la génération de son
  - la génération d'embeddings (pour les RAG)
  - certains offrent des fonctionnalités natives comme la recherche dans le Web
- - certains donnent la possibilité d'être étendus via des plugins (code natif, spécification OpenAI ou en communiquant avec des serveurs MCP, ex : [playwright](https://github.com/microsoft/playwright-mcp)) (attention, même si l'objectif est le même et que des passerelles sont possibles, les spécifications OpenAI, MCP Microsoft et MCP Anthropic sont des protocoles différents).
+ - certains donnent la possibilité d'être étendus via des plugins (code natif, spécification OpenAI ou en communiquant avec des serveurs MCP, ex : [playwright](https://github.com/microsoft/playwright-mcp)). 
 
 **Il faut distinguer la manière dont les outils sont fournis :**
  - Chatbot sur le web : ChatGPT, Le Chat de Mistral, Gemini dans Google
