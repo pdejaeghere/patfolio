@@ -181,7 +181,7 @@ Finalement, le plus simple, c'est d'essayer d'utiliser sa propre petite barque: 
 On peut le faire tourner (inférer) dans Ollama, LM studio (avec ou sans GUI) , ou plus compliqué, llama.cpp. 
 
 llama.cpp est une librairie c++ qui peut être chargée dans une application (à condition que le langage de l'application permette de charger la librairie C++ statique ou dll sous windows).
-En python, c'est le cas. Notons qu'avec Python, il existe d'autres librairies pour ça.
+En c# et python, c'est le cas. Notons qu'avec Python, il existe d'autres librairies pour ça.
 
 | Solution      | Usage "in-process" | Modèles supportés        | 
 |---------------|-------------------|---------------------------|
@@ -195,7 +195,11 @@ Chaque librairie a son format mais Il existe des outils pour convertir de nombre
 - [llama.cpp conversion scripts](https://github.com/ggml-org/llama.cpp/tree/master/scripts)
 - [TensorFlow TFLite conversion guide](https://www.tensorflow.org/lite/convert?hl=fr)
 
-En dotnet, si on utilise Semantic kernel, le plus simple est d'installer Ollama en local sous docker. Evidemment, s'il s'agit d'une application desktop qu'on veut fournir aux collégues, le déploiment via un installateur ne s'en trouvera pas facilité. Mais pour un usage personnel, on peut tenter afin d'experimenter les limites. Le serveur OLLama est un service REST, comme celui pour OpenAI azure. Malheureusement, ce n'est pas le même protocol mais Semantic Kernel fournit plusieurs providers dont un pour Ollama.
+En dotnet, si on utilise Semantic kernel, le plus simple est d'installer **Ollama** en local sous docker. Evidemment, s'il s'agit d'une application desktop qu'on veut fournir aux collégues, le déploiment via un installateur ne s'en trouvera pas facilité. Mais dans un premier temps, pour mon usage personel, surtout pour experimenter les limites des 'petits' modèles, c'est plus simple. En fait, Ollama encapsule Llama.cpp en fournissant un service REST, comme celui pour OpenAI azure. Malheureusement, ce n'est pas le même protocol mais Semantic Kernel fournit plusieurs providers dont un pour Ollama. J'ai vu que le github contenant les sources llama.cpp fournissait aussi un serveur REST. Mais pas sur que ça soit très avancé.
+Il y a aussi **LocalAI** à tester.
+
+### Avec Ollama
+
 
 ``` C#
 private bool ConfigureAzureOpenAI(IKernelBuilder kernelBuilder)
@@ -312,7 +316,7 @@ Flags:
 
 
 
-Ollama fournit differents modèles que l'on peut consulter sur le lien suivant [(https://ollama.com/library](https://ollama.com/library)
+Ollama fournit differents modèles que l'on peut consulter sur le lien suivant [https://ollama.com/library](https://ollama.com/library).
 
 
 Pour installer un model:
