@@ -234,8 +234,8 @@ Ainsi, pour une conversation de 35 tours, avec un prix de 1.6 en input et de 6.6
 
 Évidemment, il y a des stratégies à mettre en place. On peut éviter d'envoyer l'historique complet, ou bien envoyer un résumé de l'historique. Mais quand c'est combiné à un RAG, le résumé peut faire perdre des informations contenues dans les « chunks ».
 
-Bref, je ne sais pas trop si j'ai loupé quelque chose, mais, pour un usage personnel, il vaut mieux considérer l'usage d'un modèle open weight sur sa propre infra, ou alors d'utiliser les outils proposés en mode gratuit, mais surtout pas le mode API REST !
-Il y a quand même un gros problème. Les modèles open weight sont limités sur une machine moyenne, intel i9, 32 Go, GPU 4 Go. D'autre part, il semble, d'après mes premiers tests, que les modèles open weight ne supportent pas la possibilité d'appeler des fonctions (code interne ou MCP).
+Bref, je ne sais pas trop si j'ai loupé quelque chose, mais, pour un usage personnel, il vaut mieux considérer l'usage d'un modèle open weight sur sa propre infra, ou alors d'utiliser les outils proposés en mode gratuit. 
+Cependant Il y a quand même un gros problème avec les modèles open weight. Ils sont limités sur une machine moyenne, intel i9, 32 Go, GPU 4 Go. D'autre part, il semble, d'après mes premiers tests, que les modèles open weight ne supportent pas la possibilité d'appeler des fonctions (code interne ou MCP).
 Je proposerai une étude plus complète dans le prochain article...
 
 
