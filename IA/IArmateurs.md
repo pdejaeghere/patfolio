@@ -184,21 +184,174 @@ De là à certifier que toutes les informations sont exactes.... en tout cas les
 
 ## Synthèse du Chat de Mistral
 
-| Produit                | Propriétaire/Éditeur | Pays d’origine | Outils finaux (Web, IDE, Office, API…) | Modèles récents (lien doc) | Fournisseur du modèle | Type de collaboration/partenariat | Hébergement | Contexte maximal (tokens) | Mode gratuit (limites) | Mode abonnement (€/mois) | Facturation token API (€/1M tokens input/output) | Page officielle tarification | Point fort | Point faible |
-|------------------------|----------------------|----------------|-----------------------------------------|-----------------------------|-----------------------|-----------------------------------|------------|---------------------------|--------------------------|----------------------------|--------------------------------------------------|-------------------------------|------------|--------------|
-| **ChatGPT**           | OpenAI               | USA            | Web, Mobile, API, Plugins, GPT Store    | [GPT-5.2](https://help.openai.com/en/articles/9624314-model-release-notes) | OpenAI | Partenariats avec Microsoft, intégration Azure | Cloud (Azure) | 256k (128k input/128k output) | Oui (modèle de base, limites de requêtes) | Plus: 20$/mois, Pro: 200$/mois | GPT-5.2: ~1.25€/10€ input/output | [Tarifs OpenAI](https://platform.openai.com/docs/pricing) | Raisonnement avancé, intégrations riches | Coût élevé pour usage intensif, dépendance à Azure |
-| **Claude**            | Anthropic            | USA            | Web, API, AWS Bedrock, Google Vertex   | [Opus 4.6](https://platform.claude.com/docs/en/release-notes/overview) | Anthropic | Partenariats avec AWS, Google, Microsoft | Cloud (AWS/Google) | 1M | Oui (limites de tokens/jour) | Pro: 20$/mois, Max: 100$/mois | Opus 4.6: 5$/25$ input/output | [Tarifs Claude](https://platform.claude.com/docs/en/about-claude/pricing) | Sécurité, contexte très long | Prix élevé pour les modèles premium |
-| **Gemini**            | Google               | USA            | Web, Google Workspace, API, Android     | [Gemini 3 Pro](https://ai.google.dev/gemini-api/docs/gemini-3) | Google | Intégration native avec Google Cloud/Workspace | Cloud (Google) | 1M | Oui (limites sur Gemini 3 Flash) | Pro: 19.99$/mois | Gemini 3 Pro: 2$/12$ input/output | [Tarifs Gemini](https://ai.google.dev/gemini-api/docs/pricing) | Multimodalité, intégration Google | Complexité des tarifs pour les gros volumes |
-| **Microsoft Copilot** | Microsoft            | USA            | Office 365, Teams, Edge, API           | [GPT-5.2](https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes) | OpenAI/Microsoft | Intégration native avec Microsoft 365 | Cloud (Azure) | Selon modèle sous-jacent | Non (essai gratuit limité) | Business: 21$/utilisateur/mois, Enterprise: 30$/utilisateur/mois | Inclus dans abonnement | [Tarifs Copilot](https://www.microsoft.com/en-us/microsoft-365-copilot/pricing) | Intégration Office 365 | Coût par utilisateur élevé, dépendance à l’écosystème Microsoft |
-| **GitHub Copilot**    | GitHub (Microsoft)   | USA            | VS Code, JetBrains, CLI, Web            | [GPT-5.2-Codex](https://docs.github.com/en/copilot/concepts/billing/individual-plans) | OpenAI/Microsoft | Intégration native avec GitHub | Cloud (Azure) | Selon modèle | Oui (2000 suggestions/mois) | Pro: 10$/mois, Pro+: 39$/mois | Selon modèle (ex: 0.00001$/token unit) | [Tarifs GitHub Copilot](https://github.com/features/copilot/plans) | Optimisé pour le code, intégration IDE | Coût supplémentaire pour les modèles premium |
-| **Le Chat**           | Mistral AI           | France         | Web, Mobile, API                        | [Mistral Large 3](https://mistral.ai/news/mistral-3) | Mistral AI | Partenariats avec Microsoft Azure, Hugging Face | Cloud/On-premise | Jusqu’à 1M | Oui (limites généreuses) | Pro: 14.99$/mois | Mistral Large 3: ~0.28$/0.42$ input/output | [Tarifs Mistral](https://mistral.ai/pricing) | Open-weight, rapidité, respect vie privée | Moins connu hors Europe |
-| **LLaMA**             | Meta                 | USA            | API, Hugging Face, Cloud Partners      | [Llama 4 Maverick](https://ai.meta.com/blog/llama-4-multimodal-intelligence/) | Meta | Open-weight, partenariats avec AWS, Azure, Hugging Face | Cloud/On-premise | Jusqu’à 10M | Oui (accès libre aux poids) | Selon hébergeur | Llama 4 Maverick: ~0.19$/1M tokens (blended) | [Tarifs Llama](https://ai.meta.com/blog/meta-llama-3-1/) | Open-source, contexte ultra-long | Support limité pour les petits acteurs |
-| **Perplexity**        | Perplexity AI        | USA            | Web, Mobile, API                        | [Sonar Pro](https://docs.perplexity.ai/docs/getting-started/pricing) | Perplexity/Partenaires | Agrégation de modèles (OpenAI, Anthropic, etc.) | Cloud | Selon modèle | Oui (limites de requêtes) | Pro: 20$/mois, Enterprise: 40$/utilisateur/mois | Selon modèle (ex: Sonar Pro: 1$/1M tokens) | [Tarifs Perplexity](https://www.perplexity.ai/enterprise/pricing) | Recherche sourcée, multi-modèles | Moins adapté à la génération créative |
-| **Grok**              | xAI                  | USA            | Web, API, X (Twitter)                   | [Grok 4.1 Fast](https://docs.x.ai/developers/models) | xAI | Intégration avec X (Twitter) | Cloud | 2M | Oui (limites sur X Premium) | SuperGrok: 30$/mois | Grok 4.1 Fast: 0.20$/0.50$ input/output | [Tarifs Grok](https://x.ai/api) | Prix très compétitifs, accès aux données X | Moins mature que les leaders |
-| **DeepSeek**          | DeepSeek             | Chine           | Web, API, Hugging Face                  | [DeepSeek V3.2](https://api-docs.deepseek.com/quick_start/pricing) | DeepSeek | Open-weight, partenariats avec Azure, Hugging Face | Cloud/On-premise | 128k | Oui (accès libre) | Selon usage API | DeepSeek V3.2: 0.28$/0.42$ input/output | [Tarifs DeepSeek](https://api-docs.deepseek.com/quick_start/pricing-details-usd) | Très économique, open-weight | Moins connu en Occident |
 
+<table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Propriétaire</th>
+                <th>Pays</th>
+                <th>Outils finaux</th>
+                <th>Modèles récents</th>
+                <th>Hébergement</th>
+                <th>Contexte max (tokens)</th>
+                <th>Gratuit (limites)</th>
+                <th>Abonnement (€/mois)</th>
+                <th>API (€/1M tokens in/out)</th>
+                <th>Tarification</th>
+                <th>Gouvernance/Protection</th>
+                <th>Point fort</th>
+                <th>Point faible</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ChatGPT</td>
+                <td>OpenAI</td>
+                <td>USA</td>
+                <td>Web, API, VS Code, Office, Slack, Azure</td>
+                <td><a href="https://openai.com/index/introducing-gpt-5-2/" target="_blank">GPT-5.2 Instant/Thinking</a></td>
+                <td>Cloud/Azure</td>
+                <td>2M</td>
+                <td>50 messages/jour (GPT-5.1)</td>
+                <td>Plus: 20$ ; Enterprise: sur devis</td>
+                <td>Input: 1.25€/1M, Output: 3.75€/1M</td>
+                <td><a href="https://openai.com/api/pricing/" target="_blank">OpenAI Pricing</a></td>
+                <td>Opt-out entraînement, RGPD/CCPA</td>
+                <td>Meilleure intelligence générale</td>
+                <td>Coût élevé, latence occasionnelle</td>
+            </tr>
+            <tr>
+                <td>Claude</td>
+                <td>Anthropic</td>
+                <td>USA</td>
+                <td>Web, API, AWS Bedrock, Vertex AI, Slack</td>
+                <td><a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank">Opus 4.6, Sonnet 4.5</a></td>
+                <td>Cloud/AWS/Vertex</td>
+                <td>1M</td>
+                <td>50 requêtes/jour (Opus 4.5)</td>
+                <td>Pro: 17$ ; Max: 100$</td>
+                <td>Input: 5€/1M, Output: 25€/1M</td>
+                <td><a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank">Anthropic Pricing</a></td>
+                <td>Constitutional AI, prompt caching</td>
+                <td>Sécurité, faible hallucination</td>
+                <td>Prix outputs, latence mode "fast"</td>
+            </tr>
+            <tr>
+                <td>Gemini</td>
+                <td>Google</td>
+                <td>USA</td>
+                <td>Web, API, Workspace, Android, Vertex AI</td>
+                <td><a href="https://ai.google.dev/gemini-api/docs/models" target="_blank">Gemini 3.1 Pro, Flash-Lite</a></td>
+                <td>Cloud/Vertex</td>
+                <td>1M</td>
+                <td>Flash-Lite gratuit (limites RPM)</td>
+                <td>Pro: 19.99$ ; Enterprise: sur devis</td>
+                <td>Input: 1.25€/1M, Output: 10€/1M (Pro)</td>
+                <td><a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank">Gemini Pricing</a></td>
+                <td>RGPD, résidence données</td>
+                <td>Multimodal, recherche web native</td>
+                <td>Tarification complexe</td>
+            </tr>
+            <tr>
+                <td>Microsoft Copilot</td>
+                <td>Microsoft</td>
+                <td>USA</td>
+                <td>Office 365, Windows, Teams, Azure</td>
+                <td>GPT-5.2 (via Azure OpenAI)</td>
+                <td>Cloud/Azure</td>
+                <td>2M</td>
+                <td>Fonctionnalités limitées sans 365</td>
+                <td>Business: 21$ ; Enterprise: 30$/user</td>
+                <td>Intégré aux abonnements 365</td>
+                <td><a href="https://www.microsoft.com/en-us/microsoft-365-copilot/pricing" target="_blank">Copilot Pricing</a></td>
+                <td>ISO 27001, chiffrement</td>
+                <td>Intégration Microsoft 365</td>
+                <td>Dépendance écosystème Microsoft</td>
+            </tr>
+            <tr>
+                <td>Le Chat</td>
+                <td>Mistral AI</td>
+                <td>France</td>
+                <td>Web, API, Mistral Studio, NVIDIA</td>
+                <td><a href="https://mistral.ai/news/mistral-3" target="_blank">Mistral Large 3, Devstral 2</a></td>
+                <td>Cloud/On-premise</td>
+                <td>1M</td>
+                <td>Modèles Small/Medium gratuits</td>
+                <td>Pro: 14.99€ ; Team/Enterprise: sur devis</td>
+                <td>Input: 2€/1M, Output: 6€/1M</td>
+                <td><a href="https://mistral.ai/pricing" target="_blank">Mistral Pricing</a></td>
+                <td>Open-weight (Apache 2.0), hébergement EU</td>
+                <td>Latence faible, prix compétitifs</td>
+                <td>Écosystème partenaire en développement</td>
+            </tr>
+           
 
-
+            <tr>
+                <td>Meta AI (Llama)</td>
+                <td>Meta</td>
+                <td>USA</td>
+                <td>meta.ai, Facebook, WhatsApp, API</td>
+                <td><a href="https://ai.meta.com/blog/meta-llama-3-1/" target="_blank">Llama 4 Maverick, Llama 3.1 405B</a></td>
+                <td>Cloud/On-premise</td>
+                <td>10M (Scout)</td>
+                <td>Open-weight gratuit (limites API)</td>
+                <td>API: pay-as-you-go (ex: 0.19€/1M blended)</td>
+                <td>Input: 0.02€/1M, Output: 0.05€/1M (Llama 3.1)</td>
+                <td><a href="https://ai.meta.com/blog/meta-llama-3/" target="_blank">Meta Llama Pricing</a></td>
+                <td>Open-source, pas de rétention données</td>
+                <td>Contexte ultra-long, valeur open-source</td>
+                <td>Support entreprise limité</td>
+            </tr>
+            <tr>
+                <td>GitHub Copilot</td>
+                <td>GitHub/Microsoft</td>
+                <td>USA</td>
+                <td>VS Code, JetBrains, CLI, GitHub.com</td>
+                <td>GPT-5.2 Codex, Claude Opus 4.5</td>
+                <td>Cloud/Azure</td>
+                <td>2M</td>
+                <td>50 requêtes premium/mois (Free)</td>
+                <td>Pro: 10$ ; Pro+: 39$ ; Business: 19$/user</td>
+                <td>Intégré aux abonnements GitHub</td>
+                <td><a href="https://github.com/features/copilot/plans" target="_blank">GitHub Copilot Pricing</a></td>
+                <td>SOC 2, pas d’entraînement sur le code</td>
+                <td>Intégration IDE optimale</td>
+                <td>Coût cumulé avec GitHub</td>
+            </tr>
+            <tr>
+                <td>Perplexity</td>
+                <td>Perplexity AI</td>
+                <td>USA</td>
+                <td>Web, API, Comet Browser</td>
+                <td>Sonar Pro, Sonar Reasoning Pro</td>
+                <td>Cloud</td>
+                <td>1M</td>
+                <td>Recherche basique gratuite</td>
+                <td>Pro: 20$ ; Enterprise: 40$/user</td>
+                <td>API: 1€/1M input, 5€/1M output</td>
+                <td><a href="https://www.perplexity.ai/enterprise/pricing" target="_blank">Perplexity Pricing</a></td>
+                <td>Recherche web native, citations transparentes</td>
+                <td>Multi-modèles en parallèle</td>
+                <td>Moins adapté au coding avancé</td>
+            </tr>
+            <tr>
+                <td>Grok</td>
+                <td>xAI</td>
+                <td>USA</td>
+                <td>grok.com, X (Twitter), API</td>
+                <td><a href="https://docs.x.ai/developers/models" target="_blank">Grok 4.1 Fast, Grok 4</a></td>
+                <td>Cloud/xAI</td>
+                <td>2M</td>
+                <td>Accès limité sur X Premium+</td>
+                <td>SuperGrok: 30$ ; API: 0.20€/1M input, 0.50€/1M output</td>
+                <td><a href="https://x.ai/api" target="_blank">xAI Pricing</a></td>
+                <td>Données temps réel via X</td>
+                <td>Prix agressifs, modèle "anti-woke"</td>
+                <td>Transparence limitée</td>
+            </tr>
+        </tbody>
+    </table>
 
 
 
