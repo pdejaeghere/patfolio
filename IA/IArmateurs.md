@@ -284,9 +284,42 @@ De là à certifier que toutes les informations sont exactes.... en tout cas les
                 <td>Open-weight (Apache 2.0), hébergement EU</td>
                 <td>Latence faible, prix compétitifs</td>
                 <td>Écosystème partenaire en développement</td>
+            </tr>      
+            <tr>
+                <td>AWS Bedrock (Nova/Titan)</td>
+                <td>Amazon Web Services</td>
+                <td>USA</td>
+                <td>API, AWS Console, SageMaker, Lambda, S3, outils partenaires (LangChain, LlamaIndex)</td>
+                <td>
+                    <a href="https://aws.amazon.com/bedrock/pricing/" target="_blank">Nova Micro/Lite/Pro</a>,
+                    <a href="https://aws.amazon.com/bedrock/pricing/" target="_blank">Titan Text/Embeddings/Image</a>
+                </td>
+                <td>Cloud (AWS Bedrock)</td>
+                <td>2M (Nova Pro), 32K (Titan Text)</td>
+                <td>1 000 tokens/jour (Nova Micro), 5 000 tokens/jour (Titan Lite)</td>
+                <td>Pay-as-you-go (pas d'abonnement)</td>
+                <td>
+                    Nova Micro: 0,035€/1M in, 0,14€/1M out
+                    <br>Nova Pro: 0,80€/1M in, 2,40€/1M out
+                    <br>Titan Text Express: 0,80€/1M in, 1,60€/1M out
+                    <br>Titan Image: 0,04–0,06€/image
+                </td>
+                <td><a href="https://aws.amazon.com/bedrock/pricing/" target="_blank">AWS Bedrock Pricing</a></td>
+                <td>
+                    Chiffrement AES-256, conformité ISO 27001/SOC 2/RGPD,
+                    <br>Pas d'utilisation des prompts pour l'entraînement,
+                    <br>Guardrails et Knowledge Bases intégrés
+                </td>
+                <td>
+                    <strong>Nova</strong> : Meilleur rapport performance/prix, contexte long (2M),
+                    <br><strong>Titan</strong> : Multimodal, embeddings précis, stable pour l'entreprise,
+                    <br>Intégration native avec AWS (S3, Lambda, RAG)
+                </td>
+                <td>
+                    Tarification complexe, courbe d'apprentissage AWS,
+                    <br>Limites de quota en on-demand, moins de documentation que OpenAI/Google
+                </td>
             </tr>
-           
-
             <tr>
                 <td>Meta AI (Llama)</td>
                 <td>Meta</td>
@@ -351,7 +384,7 @@ De là à certifier que toutes les informations sont exactes.... en tout cas les
                 <td>Transparence limitée</td>
             </tr>
         </tbody>
-    </table>
+</table>
 
 
 
