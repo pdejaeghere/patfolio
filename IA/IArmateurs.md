@@ -48,24 +48,26 @@ Si l’on envisage des modèles open-weight, il faut s’assurer qu’ils répon
 </div>
 
 **Concernant les API REST, il faut distinguer l'infra du modèle, sachant que les deux peuvent être proposés par le même fournisseur (éditeur) :**
- - ChatGPT fournit son modèle propriétaire ainsi que l'infra
- - Idem pour AWS
- - Microsoft fournit l'infra pour faire tourner des modèles ChatGPT et Claude
+ - OpenAI fournit ses modèles propriétaires GPT-x et aussi l'infra pour ses services REST  (même s'il s'agit derrière de Azure, AWS, Oracle ...)
  - Mistral fournit le modèle et l'infra, mais l'infra utilise en fait le cloud Azure (ils souhaitent développer leur propre datacenter en Suède pour être complètement indépendants des États-Unis, souverains suivant le terme consacré)
- - fournisseur d'infrastructures cloud dédiées IA : ex **SiliconFlow**, qui fait tourner des modèles open source mais facture au token (à priori moins cher que les modèles propriétaires)
+ 
+ - AWS founit bien évidemment l'infrastructure Cloud mais aussi un service Amazon Bedrock qui peut faire tourner les modèles de differents fournisseurs (OpenAI, Anthropic, Mistral ...) mais aussi ses propres modèles Nova, Titan.
+ - Idem, Microsoft fournit l'infra Azure (des VM, du kubernates) mais aussi un service OpenAI Service pour faire tourner les modèles OpenAI ainsi qu'un autre service AI Foundry pour faire tourner des modèles open-weight ou d'autres fournisseurs. 
+
+ - fournisseur d'infrastructures cloud dédiées IA : ex **SiliconFlow**, qui fait tourner des modèles open-weight mais facture au token (à priori moins cher que les modèles propriétaires)
  - En ayant sa propre infra en utilisant LMStudio, ollama, en tant que service tournant sur un serveur, déployée ou non en tant que container Docker, sur le cloud ou on premise, ou même sur son PC local (en tenant compte de la capacité machine suivant la complexité du modèle)
- - Notons aussi qu'on peut embarquer directement un 'petit' modèle open source via des API C++, Python au sein du process de son application (besoin développeur : ex llama.cpp)
+ - Notons aussi qu'on peut embarquer directement un modèle open-weight via des API C++ ou Python au sein du process de son application (besoin développeur : ex llama.cpp, transformers, PyTorch, Tensorflow...)
 
 
 **Bien entendu, il faut aussi distinguer les modèles :**
-- il y a les grands modèles propriétaires (ChatGPT)
-- il y a les modèles open source des éditeurs connus (Mistral, Meta)
+- il y a les grands modèles propriétaires des fournisseurs OpenAI, Anthropic, Google, Mistral...
+- il y a les modèles open weight des fournisseurs Mistral, Meta...
 - On peut distinguer aussi les pays (modèles développés par la Chine ou d'autres pays de l'Asie, les États-Unis, l'Europe, le Canada)
-- il y a de nombreux modèles développés par de petites équipes ou des centres de recherche ; parfois, ce sont des modèles fine-tunés à partir de modèles fournis par Meta ou Mistral.
+- il y a de nombreux modèles développés par de petites équipes ou des centres de recherche ; parfois, ce sont des modèles fine-tunés à partir de modèles fournis par Meta ou Mistral (voir [Hugging Face](https://huggingface.co/) )
 - Et puis chaque éditeur propose une palanquée de modèles plus ou moins récents, plus ou moins gourmands.
 
 **Il faut distinguer le mode de facturation :**
- - Gratuit avec une limite de nombre de requêtes ou de tokens
+ - Gratuit avec une limite de nombre de requêtes ou de tokens (quand c'est gratuit, c'est que vos données sont le produit )
  - Un mode abonnement quand il s'agit d'utiliser les outils « prêts à l’emploi »
  - Pour le mode API, le prix se compte en millions de tokens sachant que:
    - ça dépend du modèle (un modèle d'embeddings sera moins cher qu'un modèle de génération de texte qui lui-même sera plus ou moins cher en fonction de ses capacités en nombre de tokens, raisonnements, etc.)
@@ -133,7 +135,7 @@ Ne pas limiter la liste aux noms donnés. Ajouter **tout acteur majeur mondial**
 - Impact stratégique (prix, open-weight, intégrations)
 
 ## Acteurs minimum à inclure
-OpenAI (ChatGPT), Anthropic (Claude), Google (Gemini), Microsoft (Copilot), GitHub Copilot, Mistral (Le Chat), Meta (LLaMA), Perplexity, xAI (Grok), DeepSeek, Alibaba (Qwen)
+OpenAI (ChatGPT), Anthropic (Claude), Google (Gemini), Microsoft (Copilot),  GitHub Copilot, AWS(Nova, Titan), Mistral (Le Chat), Meta (LLaMA), Perplexity, xAI (Grok), DeepSeek, Alibaba (Qwen)
 
 ## Colonnes du tableau (obligatoires)
 - Produit  
@@ -149,6 +151,7 @@ OpenAI (ChatGPT), Anthropic (Claude), Google (Gemini), Microsoft (Copilot), GitH
 - Mode abonnement (€/mois)  
 - Facturation token API (€/1M tokens input/output)  
 - Page officielle tarification  
+- Gouvernance des données et protection
 - Point fort  
 - Point faible
 
@@ -193,6 +196,8 @@ De là à certifier que toutes les informations sont exactes.... en tout cas les
 | **Perplexity**        | Perplexity AI        | USA            | Web, Mobile, API                        | [Sonar Pro](https://docs.perplexity.ai/docs/getting-started/pricing) | Perplexity/Partenaires | Agrégation de modèles (OpenAI, Anthropic, etc.) | Cloud | Selon modèle | Oui (limites de requêtes) | Pro: 20$/mois, Enterprise: 40$/utilisateur/mois | Selon modèle (ex: Sonar Pro: 1$/1M tokens) | [Tarifs Perplexity](https://www.perplexity.ai/enterprise/pricing) | Recherche sourcée, multi-modèles | Moins adapté à la génération créative |
 | **Grok**              | xAI                  | USA            | Web, API, X (Twitter)                   | [Grok 4.1 Fast](https://docs.x.ai/developers/models) | xAI | Intégration avec X (Twitter) | Cloud | 2M | Oui (limites sur X Premium) | SuperGrok: 30$/mois | Grok 4.1 Fast: 0.20$/0.50$ input/output | [Tarifs Grok](https://x.ai/api) | Prix très compétitifs, accès aux données X | Moins mature que les leaders |
 | **DeepSeek**          | DeepSeek             | Chine           | Web, API, Hugging Face                  | [DeepSeek V3.2](https://api-docs.deepseek.com/quick_start/pricing) | DeepSeek | Open-weight, partenariats avec Azure, Hugging Face | Cloud/On-premise | 128k | Oui (accès libre) | Selon usage API | DeepSeek V3.2: 0.28$/0.42$ input/output | [Tarifs DeepSeek](https://api-docs.deepseek.com/quick_start/pricing-details-usd) | Très économique, open-weight | Moins connu en Occident |
+
+
 
 
 
