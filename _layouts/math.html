@@ -5,37 +5,4 @@ layout: default
 {% include mathjax.html %}
 {{ content }}
 
-{% assign siblings = site.pages 
-  | where_exp: "p", "p.parent == page.parent and p.nav_order != nil"
-  | sort: "nav_order" %}
 
-
-
-{% for p in siblings %}
-  {% if p.url == page.url %}
-    {% assign index = forloop.index0 %}
-  {% endif %}
-{% endfor %}
-
-
-{% if index != nil %}
-  {% assign prev_index = index | minus: 1 %}
-  {% assign next_index = index | plus: 1 %}
-{% endif %}
-
-<nav class="prev-next-nav">
-  
-      {% if prev_index >= 0 %}
-        {% assign prev = siblings[prev_index] %} 
-          <a class="prev" href="{{ prev.url| relative_url }}">← {{ prev.title }}</a>    
-      {% endif %}
-  
-  <a href="{{ '/Carte de Navigation' | relative_url }}"><img src="{{'/assets/images/compass.png' | relative_url }}" width="60" class="compass-icon" alt="Navigation"></a>
-
-  
-      {% if next_index < siblings.size %}  
-        {% assign next = siblings[next_index] %}        
-          <a class="next" href="{{next.url | relative_url }}">{{ next.title }} →</a>      
-    {% endif %}
- 
-</nav>

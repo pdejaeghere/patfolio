@@ -8,8 +8,14 @@ parent: à l'IAttaque!
 
 # LLM Open barque
 
-Finalement, le plus simple, c'est d'essayer d'utiliser sa propre petite barque: un modèle open source en local.
-On peut le faire tourner (inférer) dans Ollama, LM studio (avec ou sans GUI) , ou plus compliqué, llama.cpp. 
+Dans l'article précédent [IArmateurs](/IA/IArmateurs), j'expliquais les problématiques de coût. Utiliser le mode gratuit ne peut se faire qu'à travers les applications Web ou intégrées fournis par les IArmateurs mais aux prix d'accepter que vos données soient utilisés pour entraîner les modèles.
+
+Donc, j'ai voulu essayer d'utiliser ma propre petite barque: des modèles open-weight sur des machines locales. Mais est ce que c'est utilisable? quelle puissance de machine faut-il? peut-on l'utiliser "à la place de" dans les outils de dev ? si non, faut-il developper ses propres clients (chatbot, visual studio extension)?  est-ce raisonnable?
+Dans tous les cas, l'exercice est au moins interessant pour l'aspect pédagogique. 
+
+## Les librairies ou frameworks
+
+On peut faire tourner un modèle open-weight (le terme d'usage est 'inférer' à la place de 'faire tourner') dans Ollama, LM studio (avec ou sans GUI) , ou plus compliqué, llama.cpp. 
 
 llama.cpp est une librairie c++ qui peut être chargée dans une application (à condition que le langage de l'application permette de charger la librairie C++ statique ou dll sous windows).
 En c# et python, c'est le cas. Notons qu'avec Python, il existe d'autres librairies pour ça.
@@ -29,10 +35,10 @@ Chaque librairie a son format mais Il existe des outils pour convertir de nombre
 En dotnet, si on utilise Semantic kernel, le plus simple est d'installer **Ollama** en local sous docker. Evidemment, s'il s'agit d'une application desktop qu'on veut fournir aux collégues, le déploiment via un installateur ne s'en trouvera pas facilité. Mais dans un premier temps, pour mon usage personel, surtout pour experimenter les limites des 'petits' modèles, c'est plus simple. En fait, Ollama encapsule Llama.cpp en fournissant un service REST, comme celui pour OpenAI azure. Malheureusement, ce n'est pas le même protocol mais Semantic Kernel fournit plusieurs providers dont un pour Ollama. J'ai vu que le github contenant les sources llama.cpp fournissait aussi un serveur REST. Mais pas sur que ça soit très avancé.
 Il y a aussi **LocalAI** à tester.
 
-### Avec Ollama
+## Avec Ollama
 
 
-``` C#
+```csharp
 private bool ConfigureAzureOpenAI(IKernelBuilder kernelBuilder)
 {
     var azureConfig = _options.AzureOpenAI;
@@ -50,6 +56,43 @@ private bool ConfigureLocalOllamaLLM(IKernelBuilder kernelBuilder)
 {
     kernelBuilder.Services.AddHttpClient();
     var localConfig = _options.LocalOllama;
+    if (localConfig != null)
+    {
+        try
+        {                           
+            _logger.LogInformation("Configuring Ollama LLM at {Endpoint} with model {ModelId}",localConfig.Endpoint, localConfig.ModelId);
+            var httpClient = new HttpClient(new MyHttpMessageHandler(_logger)) { Timeout = TimeSpan.FromSeconds(1000) };
+            httpClient.BaseAddress = new Uri(_options.LocalOllama.Endpoint+"/v1");
+
+            kernelBuilder.AddOpenAIChatCompletion(
+                modelId: localConfig.ModelId,
+                apiKey: "not-needed",                        
+                httpClient: httpClient
+            );
+            return true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Failed to configure Ollama LLM");
+            return false;
+        }
+    }
+    else
+    {
+      return false;
+    }
+}
+```
+
+J'avais tenté dans une première approche d'utiliser le package *Microsoft.SemanticKernel.Connectors.Olama*. Erreur! les pluggins ( sépcification OpenAI) ne sont pas du tout envoyé dans le contexte avec le prompt. J'ai cru à un probème avec les modèles.  Ce qui n'empèche pas que peu de modèle supporte ça.
+
+
+
+```csharp
+private bool ConfigureLocalOllamaLLM_2(IKernelBuilder kernelBuilder)
+{
+    kernelBuilder.Services.AddHttpClient();
+    var localConfig = _options.LocalOllama;
     if (localConfig != null )
     {      
         kernelBuilder.AddOllamaChatCompletion(
@@ -63,7 +106,7 @@ private bool ConfigureLocalOllamaLLM(IKernelBuilder kernelBuilder)
         return false;
     }                
 }
-````
+```
 
 Pour installer Ollama , depuis WSL ou n’importe quelle console Docker, il suffit d"exécuter :
 
@@ -77,7 +120,7 @@ docker run -d --name ollama -p 11434:11434 ollama/ollama
 - ollama/ollama : image officielle sur Docker Hub
 
 
-Autre possibilité, le docker-compose :
+Autre possibilité, le docker-compose (sous wsl):
 
 ```
 version: '3.8'
@@ -88,7 +131,7 @@ services:
     ports:
       - "11434:11434"
     volumes:
-      - /d/ollama:/root/.ollama
+      - /mnt/d/ollama:/root/.ollama
     restart: unless-stopped
 
 ```
