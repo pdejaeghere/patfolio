@@ -84,7 +84,7 @@ private bool ConfigureLocalOllamaLLM(IKernelBuilder kernelBuilder)
 }
 ```
 
-J'avais tenté dans une première approche d'utiliser le package *Microsoft.SemanticKernel.Connectors.Olama*. Erreur! les pluggins ( sépcification OpenAI) ne sont pas du tout envoyé dans le contexte avec le prompt. J'ai cru à un probème avec les modèles.  Ce qui n'empèche pas que peu de modèle supporte ça.
+J'avais tenté lors d'une première approche d'utiliser le package *Microsoft.SemanticKernel.Connectors.Olama*. Erreur! les pluggins ( spécification OpenAI) ne sont pas du tout envoyés dans le contexte avec le prompt. J'ai cru à un problème avec le modèle testé (mistral-small3.2) alors qu'il fonctionne très bien (Ce qui n'empèche que peux de modèle supporte le tooling).
 
 
 
