@@ -8,7 +8,7 @@ parent: à l'IAttaque!
 
 # LLM Open barque
 
-Dans l'article précédent [IArmateurs](/IA/IArmateurs), j'expliquais les problématiques de coût. Utiliser le mode gratuit ne peut se faire qu'à travers les applications Web ou intégrées fournis par les IArmateurs mais aux prix d'accepter que vos données soient utilisés pour entraîner les modèles.
+Dans l'article précédent [IArmateurs](/IA/IArmateurs), j'expliquais les problématiques de coût. Utiliser le mode gratuit ne peut se faire qu'à travers les applications Web ou intégrées fournis par les IArmateurs mais aux prix d'accepter que nos données soient utilisées pour entraîner les modèles.
 
 Donc, j'ai voulu essayer d'utiliser ma propre petite barque: des modèles open-weight sur des machines locales. Mais est ce que c'est utilisable? quelle puissance de machine faut-il? peut-on l'utiliser "à la place de" dans les outils de dev ? si non, faut-il developper ses propres clients (chatbot, visual studio extension)?  est-ce raisonnable?
 Dans tous les cas, l'exercice est au moins interessant pour l'aspect pédagogique. 
