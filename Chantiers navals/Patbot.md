@@ -7,3 +7,4 @@ parent: Chantiers navals
 
 #PatBot
 
+<img src="patbot.png" ALIGN=center/>

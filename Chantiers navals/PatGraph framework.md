@@ -55,6 +55,8 @@ Voici quelques-uns de mes requirements :
 
 
 
-## Showroom
+## Showroom  (Phase 1 en cours)
 
-<img src="activity diagram.png" width="500" ALIGN=center/>
+<img src="activity diagram.png"  ALIGN=center/>
+
+<img src="Neuronal network.png"  ALIGN=center/>
