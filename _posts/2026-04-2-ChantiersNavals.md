@@ -5,7 +5,7 @@ nav_order: 1
 link_page: Chantiers navals/presentation
 ---
 
-Navals, pas vraiment, mais je reste dans la le champs lexical des aventuriers de la mer, 😉  en espérant surtout que ça ne prendra pas l'eau et que mes réalisations ne se retrouveront pas au fond de la mer comme beaucoup de projets informatiques 🙄 ! 
+Navals, pas vraiment, mais je reste dans le champs lexical des aventuriers de la mer, 😉  en espérant surtout que ça ne prendra pas l'eau et que mes réalisations ne se retrouveront pas au fond de la mer comme beaucoup de projets informatiques 🙄 ! 
 
 J'entends déjà les *"ça existe déjà…"*, *"c'est pas utile, il y a mieux à faire…"*, *"T'as qu'à demander à GitHub Copilot…*"
 

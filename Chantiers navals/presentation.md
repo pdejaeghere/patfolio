@@ -6,7 +6,7 @@ nav_order: 5
 
 # Chantiers navals
 
-Navals, pas vraiment, mais je reste dans la le champs lexical des aventuriers de la mer, 😉  en espérant surtout que ça ne prendra pas l'eau et que mes réalisations ne se retrouveront pas au fond de la mer comme beaucoup de projets informatiques 🙄 ! 
+Navals, pas vraiment, mais je reste dans le champs lexical des aventuriers de la mer, 😉  en espérant surtout que ça ne prendra pas l'eau et que mes réalisations ne se retrouveront pas au fond de la mer comme beaucoup de projets informatiques 🙄 ! 
 
 Plus sérieusement, pour avancer sur le contenu des articles, je me suis rendu compte qu'il serait bien mieux de les agrémenter de réalisations concrètes.
 
