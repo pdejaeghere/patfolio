@@ -1,7 +1,7 @@
 ---
 title: Règle et Compas
 layout: math 
-nav_order: 5
+nav_order: 6
 ---
 
 # Règle et Compas

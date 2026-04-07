@@ -36,7 +36,7 @@ Sans compter qu'on pourrait être tenté d'utiliser plusieurs comptes gmail mais
 
 On verra le temps que ça dure!
 
-## Et pour le code?
+## Et pour le code généré gratuitement?
 
 La question du code généré par IA et des licences reste encore floue juridiquement. Les modèles ayant été entraînés sur du code open source, il est théoriquement possible que certains morceaux générés soient similaires à du code existant soumis à licence (GPL par exemple), ce qui peut poser problème dans un cadre commercial. En pratique, beaucoup d’entreprises considèrent le code généré par IA comme du code trouvé sur Internet : il doit être relu, compris et parfois réécrit avant d’être utilisé en production.
 
@@ -51,6 +51,6 @@ Pour rappel, toutes les licences ne permettent pas un usage commercial libre.
 | AGPL       | Oui              | Mais on doit **ouvrir le code même en SaaS** |
 | MPL        | Oui              | Ouvrir seulement les fichiers modifiés        |
 
-Dans les grosses entreprises, il y a très souvent un bureau spécialisé dans cette question des licences et de la propriété intellectuelle. C'est un risque majeur à ne pas prendre à la légère. Je me souviens avoir dû retirer un morceau complet récupéré à l'époque sur CodeProject. Tout le code source de nos logiciels passait régulièrement à la passoire Synopsys. 
+Dans les grosses entreprises, il y a très souvent un bureau spécialisé dans cette question des licences et de la propriété intellectuelle. C'est un risque majeur. Je me souviens avoir dû retirer un morceau complet récupéré à l'époque sur CodeProject. Tout le code source de nos logiciels passait régulièrement à la passoire Synopsys. 
 
-Et donc, qu’en est-il des morceaux de code fournis par l’IA ? La question reste ouverte. Mais à ne pas prendre à la légére, les Vibes codeurs pourraient s'en mordre les doigts !
+**Et donc, qu’en est-il des morceaux de code fournis par l’IA et dont l'inspiration vient pricipalement de Github ou SourceForge ? La question reste ouverte. Mais à ne pas prendre à la légère : les vibes-codeurs pourraient s’en mordre les doigts !**

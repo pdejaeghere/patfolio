@@ -1,7 +1,7 @@
 ---
 title: A propos du cap'tain
 layout: math 
-nav_order: 5
+nav_order: 100
 ---
 
 # A propos du cap'tain
