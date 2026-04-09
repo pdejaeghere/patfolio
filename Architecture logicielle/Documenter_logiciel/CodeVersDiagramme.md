@@ -63,3 +63,5 @@ API --> DB
 
 @enduml
 ```
+
+Ca m'a donné trés envie de retravailler sur ses aspects sur mon temps libre, d'où un petit chantier pas si modeste que ça : [PatGraph framework](/Chantiers navals/PatGraph framework).
