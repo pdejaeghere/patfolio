@@ -2,7 +2,7 @@
 title: Pirates & Survie (P&S)
 layout: math
 nav_order: 1
-link_page: Architecture logicielle/Pirates & Survie (P&S)
+link_page: Architecture logicielle/piratesAndSurvie
 ---
 
 J'avoue avoir mis un certain temps avant de m'intéresser aux questions de sécurité informatique...
